@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salome’s JavaScript Lab</title>
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+
+    <h1 id="main-heading">Welcome to Salome’s JS Page</h1>
+
+    <!-- Section 1: Alert Me -->
+    <div class="section">
+        <h2>Alert Me</h2>
+        <form onsubmit="return alertMe();">
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" required>
+            <button type="submit">Alert Me</button>
+        </form>
+    </div>
+
+    <!-- Section 2: Change Color -->
+    <div class="section">
+        <h2>Change Color</h2>
+        <button onclick="changeColor()">Change Color</button>
+    </div>
+
+    <!-- Section 3: Text Tester -->
+    <div class="section">
+        <h2>Validate Text</h2>
+        <form onsubmit="return formValidation();">
+            <label for="testInput">Enter text:</label>
+            <input type="text" id="testInput">
+            <button type="submit">Validate Text</button>
+        </form>
+    </div>
+
+    <!-- Section 4: Add Text -->
+    <div class="section">
+        <h2>Add Text</h2>
+        <button onclick="addText()">Add Text</button>
+    </div>
+
+    <script>
+        function alertMe() {
+            const name = document.getElementById("name").value;
+            alert("Hi " + name + "!");
+            return false;
+        }
+
+        let colorState = true;
+        function changeColor() {
+            if (colorState) {
+                document.body.style.backgroundColor = "lightgreen";
+            } else {
+                document.body.style.backgroundColor = "lightblue";
+            }
+            colorState = !colorState;
+        }
+
+        function formValidation() {
+            const input = document.getElementById("testInput").value;
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+            if (validation.test(input)) {
+                alert("Special characters are not allowed.");
+            } else {
+                alert("Text is valid.");
+            }
+
+            return false;
+        }
+
+        function addText() {
+            document.getElementById("main-heading").innerText += " Add Text";
+        }
+    </script>
+
+</body>
+</html>
